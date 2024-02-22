@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 import uvicorn
-from methods import *
+from auxiliary import *
 
 
 app = FastAPI()
@@ -16,7 +16,6 @@ post msgs with original url then
 @app.post("/get_url_with_id")
 def get_url_with_id():
     pass
-
 
 
 

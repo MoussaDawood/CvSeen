@@ -1,5 +1,4 @@
 from fastapi import FastAPI
-from telegram import Bot
 import requests
 import uvicorn
 
@@ -50,11 +49,10 @@ def short_url_request(id:str):
     # 301 to the actual location 
     original_url = get_original_url(id)
     redirect_to_original(original_url)
-
-
     # save click in sql database
+    pass
 
 
 
 # if __name__ == "__main__":
-    # uvicorn.run("main:app",host="127.0.0.1",port=8000)
+#     uvicorn.run("main:app",host="127.0.0.1",port=8000)

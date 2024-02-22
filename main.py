@@ -1,42 +1,32 @@
 from fastapi import FastAPI
-import requests
 import uvicorn
-
-# get it from @BotFather
-bot_token = '7089629432:AAEX9ts73EvYmte66oHMh2v52xvyok2XYCw'
-# get it from getchatid.py
-chat_id = '566639260'
+from methods import *
 
 
 app = FastAPI()
 
 
-def send_message(token, chat_id, message):
-    url = f"https://api.telegram.org/bot{token}/sendMessage"
-    params = {
-        'chat_id': chat_id,
-        'text': message
-    }
-    response = requests.post(url, params=params)
-    if response.status_code == 200:
-        print("Message sent successfully")
-    else:
-        print(f"Failed to send message. Error: {response.text}")
+'''
+post msgs with original url then 
+    - generate unique id and ensures that it is unique
+    - set the new id to DB and point to the original url and title
+    - respond to the post request with the new urls
 
-
-def get_cv_title(id):
-    # TODO:
-    return 'CV_TITLE'
-
-
-def get_original_url(id):
-    return "https://google.com"
-    
-    
-def redirect_to_original(original_url):
+'''
+@app.post("/get_url_with_id")
+def get_url_with_id():
     pass
-    
-    
+
+
+
+
+'''
+when short url requested then
+    - query the DB for the orginal url
+    - query the Db for the title of orignal url
+    - send msg via telegram that cv with TITLE open
+    - 301 th request to the original url
+'''     
 @app.get('/')
 def short_url_request(id:str):    
     
@@ -51,6 +41,9 @@ def short_url_request(id:str):
     redirect_to_original(original_url)
     # save click in sql database
     pass
+
+
+
 
 
 

@@ -1,10 +1,12 @@
 import requests
 
 # get it from @BotFather
-TelegramToken = 'WILL_NOT_PUBLISH_MY_TOKEN_OF_COURSE'
+TelegramToken = 'YOUR_TOKEN_HERE'
+
 
 def get_chat_id():
-    response = requests.get(f'https://api.telegram.org/bot{TelegramToken}/getUpdates')
+    response = requests.get(
+        f'https://api.telegram.org/bot{TelegramToken}/getUpdates')
     data = response.json()
     if data['ok']:
         # Get the latest message
@@ -18,6 +20,7 @@ def get_chat_id():
         # print("Error occurred while fetching updates:", data['description'])
         return None
 
+
 if __name__ == "__main__":
     # send msg to your telegram bot first ex: /start
     chat_id = get_chat_id()
@@ -25,7 +28,3 @@ if __name__ == "__main__":
         print("Chat ID:", chat_id)
     else:
         print("Failed to retrieve the chat ID.")
-
-
-
-
